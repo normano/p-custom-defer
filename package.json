@@ -1,19 +1,24 @@
 {
-	"name": "p-defer",
+	"name": "p-custom-defer",
 	"version": "3.0.0",
-	"description": "Create a deferred promise",
+	"description": "Create a deferred promise with support for custom promise classes",
 	"license": "MIT",
 	"repository": "sindresorhus/p-defer",
-	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
-	},
+	"author": "N. Ovenseri <novenseri@gmail.com>",
+	"contributors": [
+		{
+			"name": "Sindre Sorhus",
+			"email": "sindresorhus@gmail.com",
+			"url": "http://sindresorhus.com"
+		}
+	],
+	"main": "dist/index.js",
 	"engines": {
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava && tsd"
+		"test": "ava",
+		"build": "rm -fr dist && tsc"
 	},
 	"files": [
 		"index.js",
@@ -32,8 +37,25 @@
 		"promises"
 	],
 	"devDependencies": {
-		"ava": "^2.0.0",
-		"tsd": "^0.7.3",
-		"xo": "^0.24.0"
+		"ava": "^3.9.0",
+		"ts-node": "^8.10.2",
+		"tsd": "^0.11.0",
+		"typescript": "^3.9",
+		"xo": "^0.32.0"
+	},
+	"ava": {
+		"extensions": [
+			"ts"
+		],
+		"failFast": true,
+		"tap": true,
+		"powerAssert": false,
+		"files": [
+			"test/**/*",
+			"!test/src/**"
+		],
+		"require": [
+			"ts-node/register"
+		]
 	}
 }
