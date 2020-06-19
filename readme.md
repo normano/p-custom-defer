@@ -22,7 +22,7 @@ Returns an `object` with a `promise` property and functions to `resolve()` and `
 
 ### pDefer.custom(promiseCls, arg: any[])
 
-Returns an `object` with a `promise` property and functions to `resolve()` and `reject()`. Promise will constructed using the user promise cls with args. Custom Promise class constructor must contain an executor argument at the end.
+Returns an `object` with a `promise` property and functions to `resolve()` and `reject()`. Promise will constructed using the user promise cls with args. Custom Promise class constructor must contain an executor argument as the initial argument.
 
 # Related
 

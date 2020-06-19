@@ -34,7 +34,7 @@ export default function pDefer<ResolveType>() {
 };
 
 /**
- * Custom Promise class must contain executor at the end of the constrector
+ * Custom Promise class must contain executor at the start of the constrector
  */
 pDefer.custom = function customDefer<ResolveType>(
 	customPromiseCls: new (...args: any) => Promise<ResolveType>,
@@ -54,7 +54,7 @@ pDefer.custom = function customDefer<ResolveType>(
 
 	if(varArgs) {
 		let args = varArgs.slice();
-		args.push(executor);
+		args.unshift(executor);
 		args.unshift(null);
 
 		deferred.promise = new (Function.prototype.bind.apply(customPromiseCls, args));
