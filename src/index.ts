@@ -1,4 +1,4 @@
-interface DeferredPromise<ResolveType> {
+export interface DeferredPromise<ResolveType> {
 	/**
 	Resolves the promise with a value or the result of another promise.
 	@param value - The value to resolve the promise with.

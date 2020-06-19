@@ -1,5 +1,5 @@
 {
-	"name": "p-custom-defer",
+	"name": "@excsn/p-custom-defer",
 	"version": "3.1.1",
 	"description": "Create a deferred promise with support for custom promise classes",
 	"license": "MIT",
