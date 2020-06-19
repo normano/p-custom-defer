@@ -1,9 +1,9 @@
 {
 	"name": "p-custom-defer",
-	"version": "3.1.0",
+	"version": "3.1.1",
 	"description": "Create a deferred promise with support for custom promise classes",
 	"license": "MIT",
-	"repository": "sindresorhus/p-defer",
+	"repository": "normano/p-custom-defer",
 	"author": "N. Ovenseri <novenseri@gmail.com>",
 	"contributors": [
 		{
@@ -20,10 +20,6 @@
 		"test": "ava",
 		"build": "rm -fr dist && tsc"
 	},
-	"files": [
-		"index.js",
-		"index.d.ts"
-	],
 	"keywords": [
 		"promise",
 		"defer",

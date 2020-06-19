@@ -33,8 +33,12 @@ export default function pDefer<ResolveType>() {
 	return deferred;
 };
 
+/**
+ * Custom Promise class must contain executor at the end of the constrector
+ */
 pDefer.custom = function customDefer<ResolveType>(
-	customPromiseCls: new (executor: (result, reject) => void) => Promise<ResolveType>
+	customPromiseCls: new (...args: any) => Promise<ResolveType>,
+	varArgs?: any[],
 ) {
 
   const deferred: DeferredPromise<ResolveType> = {
@@ -43,10 +47,21 @@ pDefer.custom = function customDefer<ResolveType>(
     "reject": null,
 	};
 
-	deferred.promise = new customPromiseCls((resolve, reject) => {
+	const executor = (resolve, reject) => {
 		deferred.resolve = resolve;
 		deferred.reject = reject;
-	});
+	};
+
+	if(varArgs) {
+		let args = varArgs.slice();
+		args.push(executor);
+		args.unshift(null);
+
+		deferred.promise = new (Function.prototype.bind.apply(customPromiseCls, args));
+	} else {
+
+		deferred.promise = new customPromiseCls(executor);
+	}
 
   return deferred;
 };

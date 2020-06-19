@@ -1,36 +1,18 @@
-# p-defer [![Build Status](https://travis-ci.org/sindresorhus/p-defer.svg?branch=master)](https://travis-ci.org/sindresorhus/p-defer)
+# p-custom-defer
 
 > Create a deferred promise
 
-[Don't use this unless you know what you're doing.](https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns#the-deferred-anti-pattern) Prefer the `Promise` constructor.
+Forked from p-defer to add support for Custom Promise classes.
 
-
-## Install
+# Install
 
 ```
-$ npm install p-defer
+$ npm install p-custom-defer
 ```
 
+# Usage
 
-## Usage
-
-```js
-const pDefer = require('p-defer');
-
-function delay(ms) {
-	const deferred = pDefer();
-	setTimeout(deferred.resolve, ms, '🦄');
-	return deferred.promise;
-}
-
-(async () => {
-	console.log(await delay(100));
-	//=> '🦄'
-})();
-```
-
-*The above is just an example. Use [`delay`](https://github.com/sindresorhus/delay) if you need to delay a promise.*
-
+Look at the [test file](/test/index.ts) for examples.
 
 ## API
 
@@ -38,21 +20,10 @@ function delay(ms) {
 
 Returns an `object` with a `promise` property and functions to `resolve()` and `reject()`.
 
+### pDefer.custom(promiseCls, arg: any[])
 
-## Related
+Returns an `object` with a `promise` property and functions to `resolve()` and `reject()`. Promise will constructed using the user promise cls with args. Custom Promise class constructor must contain an executor argument at the end.
 
-- [p-lazy](https://github.com/sindresorhus/p-lazy) - Create a lazy promise that defers execution until `.then()` or `.catch()` is called
-- [More…](https://github.com/sindresorhus/promise-fun)
+# Related
 
-
----
-
-<div align="center">
-	<b>
-		<a href="https://tidelift.com/subscription/pkg/npm-p-defer?utm_source=npm-p-defer&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
-	</b>
-	<br>
-	<sub>
-		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
-	</sub>
-</div>
+- [p-defer](https://github.com/sindresorhus/p-defer)
